@@ -1,8 +1,50 @@
-h1 {
-    color: #4ac1f7;
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
-.mylogo {
-    height: 300px;
-    width: auto;
+body{
+	font-family: var(--body-font);
+	font-size: var(--normal-font-size);
+	background-color: var(--body-color);
+}
+
+ul{
+	list-style: none;
+	// Color highlighting when pressed on mobile devices
+	// -webkit-tap-highlight-color: transparent;
+}
+
+a{
+	text-decoration: none;
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+.hero {
+    background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+    height: 100vh;
+    position: relative;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero .overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
 }

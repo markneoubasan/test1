@@ -1,0 +1,89 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br>
+<section id="testimonials" class="testimonials">
+
+    <h1 class="heading">What Our Students Say</h1>
+    <h3 class="subheading">Real stories, Real results</h3>
+
+    <div class="testimonial-container">
+
+        <!-- Testimonial 1 -->
+        <div class="testimonial">
+            <img src="{% static 'images/33.jpg' %}" alt="Student 1">
+            <div class="testimonial-content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star dim"></i>
+                </div>
+                <p>"I had an amazing experience at the driving school! The instructors were patient and professional. I passed my driving test on the first try!"</p>
+                <h4>- Reynaldo Etes Jr.</h4>
+                <p>New Driver</p>
+            </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial">
+            <img src="{% static 'images/44.jpg' %}" alt="Student 2">
+            <div class="testimonial-content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star dim"></i>
+                </div>
+                <p>"The driving school provided a comfortable learning environment. The lessons were clear, and I felt prepared when it came time for the test."</p>
+                <h4>- Mark Rebel</h4>
+                <p>Experienced Driver</p>
+            </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial">
+            <img src="{% static 'images/11.jpg' %}" alt="Student 3">
+            <div class="testimonial-content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star dim"></i>
+                </div>
+                <p>"I was nervous at first, but the instructors were so understanding. They guided me through every step, and now I feel confident on the road!"</p>
+                <h4>- Jerone Naling</h4>
+                <p>Teen Driver</p>
+            </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial">
+            <img src="{% static 'images/22.jpg' %}" alt="Student 4">
+            <div class="testimonial-content">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star dim"></i>
+                </div>
+                <p>"Great experience! The driving lessons were tailored to my specific needs, and I was able to learn at my own pace. Highly recommend!"</p>
+                <h4>- James Lupisan</h4>
+                <p>Adult Learner</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cta">
+        <h2>Ready to start your journey?</h2>
+        <a href="/contact" class="cta-button">Inquire Now</a>
+    </div>
+
+</section>
+
+{% endblock content %}

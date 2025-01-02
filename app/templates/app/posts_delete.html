@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+    <h1>Delete Comment</h1>
+    <form action="{% url 'posts_delete' object.pk %}" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{post.name}}"?</p>
+        <input type="submit" value="Confirm">
+        <a href="/posts">Cancel</a>
+    </form>
+{% endblock content %}

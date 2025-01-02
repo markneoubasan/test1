@@ -1,0 +1,77 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+
+<section id="teacher" class="teacher">
+
+    <h1 class="heading">Our Instructors</h1>
+    <h3 class="title">NextGen Driving School Trainers</h3>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="{% static 'images/1.png' %}" alt="Instructor 1">
+            <h3>Amber Collins</h3>
+            <p>Make you a better Driver</p>
+            <div class="icons">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fas fa-envelope"></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/2.png' %}" alt="Instructor 2">
+            <h3>Nicole Valdez</h3>
+            <p>Make you a better Driver</p>
+            <div class="icons">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fas fa-envelope"></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/3.jpg' %}" alt="Instructor 3">
+            <h3>Darwin Cave</h3>
+            <p>Make you a better Driver</p>
+            <div class="icons">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fas fa-envelope"></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/4.png' %}" alt="Instructor 4">
+            <h3>Catherine Maze</h3>
+            <p>Make you a better Driver</p>
+            <div class="icons">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fas fa-envelope"></a>
+            </div>
+        </div>
+
+        <div class="social-icons">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+        </div>
+    </div>
+</section>
+
+<!--===== List View Section =====-->
+
+<h1>Join us for a better life and beautiful future</h1>
+<a href="{% url 'team_create' %}">Apply Now!</a>
+    {% for instructor in instructors %}
+        <div class="post-entry">
+            <h2><a href="{% url 'team_detail' post.pk %}">{{post.name}}</a> </h2>
+        </div>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br>
+
+    <div class="post-entry">
+        <h2><a href="{% url 'team_detail' post.pk %}">{{post.name}}</a></h2>
+        <p>{{post.bio}} - {{post.rating}} - {{post.verified_credentials}} - {{post.years_of_experience}} -
+            {{post.profile_picture}} - {{post.specialties}} - {{post.contact_email}} -
+            {{post.phone_number}}</p>
+    </div>
+{% endblock content %}

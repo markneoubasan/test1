@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/admin_enrollment_create.css' %}">
+    <title>Enrollment Form</title>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>Enrollment Form</h1>
+        </div>
+        <p class="intro-text">Please fill in the details below to enroll in a course.</p>
+        <form id="enrollmentForm" action="{% url 'admin_enrollment_create' %}" method="post">
+            {% csrf_token %}
+
+            <label for="user">User:</label>
+            {{ form.user }}
+            {% for error in form.user.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="course">Course:</label>
+            {{ form.course }}
+            {% for error in form.course.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="enrollment_date">Date:</label>
+            <input type="date" id="enrollment_date" name="enrollment_date" value="{{ form.enrollment_date.value }}">
+            {% for error in form.enrollment_date.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <input type="submit" value="Enroll">
+        </form>
+        <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">Cancel</a>
+    </div>
+</body>
+</html>

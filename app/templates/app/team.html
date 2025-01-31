@@ -1,7 +1,7 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block content %}
-<br><br><br><br><br>
+<br><br><br><br>
 
 <section id="teacher" class="teacher">
 
@@ -64,14 +64,4 @@
         </div>
     </div>
 </section>
-
-<!--===== List View Section =====-->
-
-<h1>Join us for a better life and beautiful future</h1>
-<a href="{% url 'team_create' %}">Apply Now!</a>
-    {% for instructor in instructors %}
-        <div class="post-entry">
-            <h2><a href="{% url 'team_detail' post.pk %}">{{post.name}}</a> </h2>
-        </div>
-    {% endfor %}
 {% endblock content %}

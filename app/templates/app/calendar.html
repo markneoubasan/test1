@@ -1,6 +1,128 @@
 {% extends 'app/base.html' %}
-
 {% block content %}
-<br><br><br><br><br>
-    <h1>This is Calendar Page</h1>
+<br><br><br><br><br><br>
+
+<!-- Calendar Page -->
+<div class="calendar-container">
+    <div class="calendar-header">
+        <button class="prev-month" onclick="changeMonth(-1)">&#10094;</button>
+        <h2 id="month-year"></h2>
+        <button class="next-month" onclick="changeMonth(1)">&#10095;</button>
+    </div>
+
+    <div class="calendar-grid">
+        <div class="calendar-day header">Sun</div>
+        <div class="calendar-day header">Mon</div>
+        <div class="calendar-day header">Tue</div>
+        <div class="calendar-day header">Wed</div>
+        <div class="calendar-day header">Thu</div>
+        <div class="calendar-day header">Fri</div>
+        <div class="calendar-day header">Sat</div>
+
+        <!-- Calendar Days -->
+    </div>
+</div>
+
+<script>
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+
+    // Store the noted days
+    const notedDays = {};
+
+    function renderCalendar() {
+        const monthYear = document.getElementById("month-year");
+        const calendarGrid = document.querySelector(".calendar-grid");
+
+        // Set month and year in the header
+        monthYear.innerText = `${new Date(currentYear, currentMonth).toLocaleString("default", { month: "long" })} ${currentYear}`;
+
+        // Clear the grid before rendering new days
+        calendarGrid.innerHTML = '';
+
+        // Days of the week headers
+        const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        daysOfWeek.forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('calendar-day', 'header');
+            dayElement.innerText = day;
+            calendarGrid.appendChild(dayElement);
+        });
+
+        // Get the first day of the month
+        const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+
+        // Get the total number of days in the current month
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+        // Add empty divs for the days before the start of the month
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.classList.add('calendar-day', 'empty');
+            calendarGrid.appendChild(emptyDay);
+        }
+
+        // Add the actual days of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('calendar-day');
+            dayElement.innerText = day;
+
+            // Add a class if the day is noted
+            if (notedDays[day]) {
+                dayElement.classList.add('noted');
+            }
+
+            // Add click event to note a day
+            dayElement.addEventListener('click', () => {
+                toggleNotedDay(day);
+            });
+
+            calendarGrid.appendChild(dayElement);
+        }
+
+        // Add empty divs after the last day of the month to complete the grid
+        const remainingDays = (7 - ((firstDayOfMonth + daysInMonth) % 7)) % 7;
+        for (let i = 0; i < remainingDays; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.classList.add('calendar-day', 'empty');
+            calendarGrid.appendChild(emptyDay);
+        }
+    }
+
+    function changeMonth(direction) {
+        currentMonth += direction;
+
+        // If it's December and the user clicks next, go to January
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+
+        // If it's January and the user clicks previous, go to December of previous year
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+
+        // Render the calendar with updated month and year
+        renderCalendar();
+    }
+
+    function toggleNotedDay(day) {
+        // Toggle the noted state for the clicked day
+        if (notedDays[day]) {
+            delete notedDays[day];
+        } else {
+            notedDays[day] = true;
+        }
+
+        // Re-render the calendar to reflect the updated noted days
+        renderCalendar();
+    }
+
+    // Render initial calendar
+    renderCalendar();
+</script>
+
 {% endblock content %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/user_update.css' %}">
+    <title>User Update</title>
+</head>
+<body>
+    <div class="form-container">
+        <h1>User Update</h1>
+        <p class="intro-text">Please update the details below to update the user information.</p>
+        <form id="userForm" action="{% url 'user_update' user.pk %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ user.name }}">
+            {% for error in form.name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="{{ user.username }}">
+            {% for error in form.username.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" value="{{ user.password }}">
+            {% for error in form.password.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value="{{ user.email }}">
+            {% for error in form.email.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <input type="submit" value="Update">
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

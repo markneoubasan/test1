@@ -1,12 +1,33 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block content %}
-<br><br><br><br>
+<br><br><br><br><br>
 
     <div class="post-entry">
-        <h2><a href="{% url 'team_detail' post.pk %}">{{post.name}}</a></h2>
-        <p>{{post.bio}} - {{post.rating}} - {{post.verified_credentials}} - {{post.years_of_experience}} -
-            {{post.profile_picture}} - {{post.specialties}} - {{post.contact_email}} -
-            {{post.phone_number}}</p>
+        {% if instructor.profile_picture %}
+            <img src="{{ instructor.profile_picture.url }}"
+                 style="max-width: 100px; max-height: 100px;"
+            />
+        {% else %}
+        <span>No image Available</span>
+        {% endif %}
+
+        <h2><a href="">{{instructor.name}}</a></h2>
+        <p>{{instructor.bio}}</p>
+        {% if instructor.verified_credentials %}
+            <img src="{{ instructor.verified_credentials.url }}"
+                 style="max-width: 100px; max-height: 100px;"
+            />
+        {% else %}
+        <span>No image Available</span>
+        {% endif %}
+
+        <p>{{instructor.years_of_experience}}</p>
+
+        <p>{{instructor.specialties}}</p>
+        <p>{{instructor.contact_email}}</p>
+        <p>{{instructor.phone_number}}</p>
+
+        <a href="/team">Back</a>
     </div>
 {% endblock content %}

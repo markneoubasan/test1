@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/admin_instructor_update.css' %}">
+    <title>Welcome</title>
+</head>
+<body>
+    <div class="form-container">
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <h1>Instructors Form</h1>
+        <p class="intro-text">Please update the details below to update instructor information.</p>
+        <form id="instructorForm" action="{% url 'instructor_create' %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ form.name.value }}">
+            {% for error in form.name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="bio">Bio:</label>
+            <input type="text" id="bio" name="bio" value="{{ form.bio.value }}">
+            {% for error in form.bio.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="verified_credentials">Credentials:</label>
+            <input type="file" id="verified_credentials" name="verified_credentials" value="{{ form.verified_credentials.value }}">
+            {% for error in form.verified_credentials.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="years_of_experience">Years of Experience:</label>
+            <input type="text" id="years_of_experience" name="years_of_experience" value="{{ form.years_of_experience.value }}">
+            {% for error in form.years_of_experience.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="profile_picture">Profile:</label>
+            <input type="file" id="profile_picture" name="profile_picture">
+            {% for error in form.profile_picture.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="specialties">Specialties:</label>
+            <input type="text" id="specialties" name="specialties" value="{{ form.specialties.value }}">
+            {% for error in form.specialties.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="contact_email">Email:</label>
+            <input type="text" id="contact_email" name="contact_email" value="{{ form.contact_email.value }}">
+            {% for error in form.contact_email.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="phone_number">Phone Number:</label>
+            <input type="number" id="phone_number" name="phone_number" value="{{ form.phone_number.value }}">
+            {% for error in form.phone_number.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <input type="submit" value="Add">
+            <br>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

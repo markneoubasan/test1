@@ -1,14 +1,19 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block content %}
-<br><br><br><br>
-<div class="content">
-    <h3>NextGen Driving School</h3>
-    <h1>LEARN TO DRIVE<br> WITH CONFIDENCE</h1>
-    <p>Welcome to NextGen Driving School, where we help you become a safe, confident driver.<br>
-        Join us today and start your journey to becoming a safe, responsible driver on the road.<br>
-        Start your journey with us today!</p>
-    <a href="/about" class="btn">Learn More</a>
-    <a href="/course" class="btn btn2">View Courses</a>
+<br><br><br>
+<div class="hero-section">
+    <div class="overlay"></div>
+    <div class="content">
+        <h3 class="title">NextGen Driving School</h3>
+        <h1 class="main-heading">LEARN TO DRIVE<br> WITH CONFIDENCE</h1>
+        <p class="intro-text">Welcome to NextGen Driving School, where we help you become a safe, confident driver.<br>
+            Join us today and start your journey to becoming a safe, responsible driver on the road.<br>
+            Start your journey with us today!</p>
+        <div class="button-container">
+            <a href="/about" class="btn btn-learn-more">Learn More</a>
+            <a href="/course" class="btn btn-view-courses">View Courses</a>
+        </div>
+    </div>
 </div>
 {% endblock content %}

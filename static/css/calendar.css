@@ -1,0 +1,112 @@
+/* Calendar Container */
+.calendar-container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar Header */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.prev-month,
+.next-month {
+    font-size: 1.5rem;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.prev-month:hover,
+.next-month:hover {
+    background-color: #005a9e;
+}
+
+#month-year {
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.calendar-day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-height: 60px;
+}
+
+.calendar-day:hover {
+    background-color: #0078d4;
+    color: white;
+    transform: scale(1.1);
+}
+
+.calendar-day.header {
+    background-color: transparent;
+    font-weight: bold;
+    background-color: #0078d4;
+    color: white;
+}
+
+.calendar-day.empty {
+    background-color: transparent;
+}
+
+.calendar-day.noted {
+    background-color: #172A45;
+    color: #f4f4f4;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .calendar-container {
+        width: 95%;
+    }
+    .calendar-header {
+        font-size: 1.2rem;
+    }
+    .calendar-day {
+        font-size: 1rem;
+        padding: 15px;
+        min-height: 50px;
+    }
+}
+
+/* Day Labels (Sun-Sat) */
+.calendar-day.header {
+    margin-top: 640px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #172A45;
+    color: #f4f4f4;
+    padding: 15px 0;
+    text-align: center;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/admin_course_create.css' %}">
+    <title>Course Update</title>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>Course Update Form</h1>
+        </div>
+        <p class="intro-text">Please update the details below for the course.</p>
+        <form id="courseForm" action="{% url 'course_update' course.pk %}" method="post">
+            {% csrf_token %}
+
+            <label for="course_type">Course:</label>
+            <input type="text" id="course_type" name="course_type" value="{{ course.course_type }}">
+            {% for error in form.course_type.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" value="{{ course.description }}">
+            {% for error in form.description.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="duration">Duration:</label>
+            <input type="text" id="duration" name="duration" value="{{ course.duration }}">
+            {% for error in form.duration.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="instructor">Instructor:</label>
+            {{ form.instructor }}
+            {% for error in form.instructor.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <input type="submit" value="Update Course">
+        </form>
+        <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">Cancel</a>
+    </div>
+</body>
+</html>

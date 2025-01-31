@@ -1,12 +1,39 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block content %}
-<br><br><br><br><br>
-    <h1>New Comment</h1>
-    <form action="{% url 'posts_create' %}" method="post">
+<br><br><br><br><br><br>
+<h1 class="form-heading">New Comment</h1>
+<div class="form-container">
+    <h2>User Form</h2>
+    <p class="intro-text">Please fill in the details below to add a new post.</p>
+
+    <form id="postForm" action="{% url 'posts_create' %}" method="post">
         {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Post">
-        <a href="/posts">Cancel</a>
+
+        <!-- User Field -->
+        <div class="form-group">
+            <label for="user">User:</label>
+            {{ form.user }}
+            {% for error in form.user.errors %}
+                <small class="error-message">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <!-- Comment Field -->
+        <div class="form-group">
+            <label for="body">Comment:</label>
+            <textarea id="body" name="body" rows="4" placeholder="Post a comment...">{{ post.body }}</textarea>
+            {% for error in form.body.errors %}
+                <small class="error-message">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <!-- Submit and Cancel Buttons -->
+        <div class="form-actions">
+            <input type="submit" value="Post" class="submit-button">
+            <a href="/posts" class="cancel-button">Cancel</a>
+        </div>
     </form>
+</div>
+
 {% endblock content %}

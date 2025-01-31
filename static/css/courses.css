@@ -1,0 +1,123 @@
+.courses-hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background: url("/static/images/course.png") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.courses-hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.courses-hero .content {
+    position: relative;
+    z-index: 2;
+}
+
+.courses-hero .main-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    animation: fadeIn 1.5s ease-in forwards;
+}
+
+.courses-hero .sub-heading {
+    font-size: 1.3rem;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+}
+
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 50px;
+    background: #0a1931;
+    text-align: center;
+}
+
+.course {
+    background: #172A45;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    color: #f4f4f4;
+}
+
+.course img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.course:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+.course img:hover {
+    transform: scale(1.1);
+}
+
+.full-width {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #f4f4f4;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.btn-enroll {
+    display: inline-block;
+    padding: 12px 30px;
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, #ffcc00, #e65c00);
+    color: #000;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn-enroll:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffcc00;
+    border-color: #ffcc00;
+    box-shadow: 0px 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.course-description {
+    font-size: 1.1rem;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

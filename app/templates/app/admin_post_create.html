@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/admin_post_create.css' %}">
+    <title>Welcome</title>
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="card">
+            <h1>Admin Post Form</h1>
+            <p class="intro-text">Please fill in the details below to add a new post.</p>
+
+            <form id="postForm" action="{% url 'admin_post_create' %}" method="post">
+                {% csrf_token %}
+
+                <label for="user">User:</label>
+                {{ form.user }}
+                {% for error in form.user.errors %}
+                    <small>{{ error }}</small>
+                {% endfor %}
+
+                <label for="body">Comment:</label>
+                {{ form.body }}
+                {% for error in form.body.errors %}
+                    <small>{{ error }}</small>
+                {% endfor %}
+
+                <input type="submit" value="Post">
+            </form>
+
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">Cancel</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa; /* Soft background color */
+    color: #333;
+}
+
+/* Form Container */
+.form-container {
+    background-color: #ffffff; /* White background for the form */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    max-width: 600px;
+    margin: 50px auto; /* Center form on the page */
+}
+
+/* Heading */
+.form-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Subheading */
+.form-container h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #0078d4;
+    margin-bottom: 10px;
+}
+
+/* Intro Text */
+.intro-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Form Group */
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    transition: border 0.3s ease;
+}
+
+/* Focus Effect */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #0078d4;
+    outline: none;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Submit and Cancel Buttons */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.submit-button,
+.cancel-button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Submit Button */
+.submit-button {
+    background-color: #0078d4;  /* Blue background */
+    color: white;
+    border: none;
+}
+
+.submit-button:hover {
+    background-color: #005a9e;  /* Darker blue on hover */
+    transform: scale(1.05);
+}
+
+/* Cancel Button */
+.cancel-button {
+    background-color: #ffcc00;  /* Yellow background */
+    color: white;
+    text-decoration: none;
+    border: none;
+}
+
+.cancel-button:hover {
+    background-color: #e65c00;  /* Darker orange on hover */
+    transform: scale(1.05);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-heading {
+        font-size: 2rem;
+    }
+
+    .form-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.95rem;
+    }
+
+    .submit-button,
+    .cancel-button {
+        font-size: 1rem;
+    }
+}

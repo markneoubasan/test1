@@ -1,0 +1,26 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/user_delete.css' %}">
+    <title>Delete User</title>
+</head>
+{% block content %}
+    <div class="form-container">
+        <h1>Delete User Form</h1>
+        <p class="intro-text">Are you sure you want to delete "<strong>{{ user.name }}</strong>"?</p>
+        <div class="admin-info">
+            <p><strong>Username: </strong>{{ user.username }}</p>
+            <p><strong>Password: </strong>{{ user.password }}</p>
+            <p><strong>Email: </strong>{{ user.email }}</p>
+        </div>
+        <div class="warning-message">
+            <i class="ri-alert-fill"></i> This action cannot be done.
+        </div>
+        <form action="{% url 'user_delete' user.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Confirm" class="confirm-button">
+        </form>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">Cancel</a>
+    </div>
+{% endblock %}

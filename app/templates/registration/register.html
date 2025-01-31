@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>User Login</title>
+</head>
+<body>
+<div class="login">
+    <h2>Register Form</h2>
+ <form id="RegisterForm" action="{% url 'user_register' %}" method="post">
+            {% csrf_token %}
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" name="name">
+            {% for error in form.name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username" name="username">
+            {% for error in form.username.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" placeholder="Enter your email" name="email">
+            {% for error in form.email.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" name="password">
+            {% for error in form.password.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <input type="submit" value="Register">
+             <h3>Already have an account?</h3>
+            <a href="{% url 'login' %}" class="register-link">Login</a>
+        </form>
+</div>
+</body>
+</html>

@@ -3,10 +3,15 @@
 {% block content %}
 <br><br><br><br><br>
 
-        <div class="post-entry">
-            <h2><a href="">{{post.name}}</a> </h2>
-            <p>{{post.body}}</p>
-        </div>
-        <a href="{% url 'posts_update' post.pk %}">Edit Post</a>
-        <a href="{% url 'posts_delete' post.pk %}">Delete Post</a>
+<div class="post-entry">
+
+    <h2 class="post-title"><a href="">{{ post.user.name }}</a></h2>
+
+    <p class="post-body">{{ post.body }}</p>
+</div>
+
+<div class="post-actions">
+    <a href="{% url 'posts' %}" class="back-button" onclick="return confirmBack();">Back</a>
+</div>
+
 {% endblock content %}

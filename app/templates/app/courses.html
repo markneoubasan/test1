@@ -1,6 +1,74 @@
 {% extends 'app/base.html' %}
-
+{% load static %}
 {% block content %}
-<br><br><br><br><br>
-    <h1>This is Courses Page</h1>
+<br><br><br><br>
+<!-- Hero Section -->
+<div class="courses-hero">
+    <div class="overlay"></div>
+    <div class="content">
+        <h1 class="main-heading">Our Driving Courses</h1>
+        <p class="sub-heading">Choose the right course and become a skilled driver.</p>
+    </div>
+</div>
+
+<!-- Courses Section -->
+<section class="courses-container">
+
+    <!-- Practical Driving Course (Header) -->
+    <div class="full-width">
+        <h2 class="section-title">Practical Driving Course</h2>
+        <a href="{% url 'enrollment_create' %}" class="btn-enroll">Enroll Now</a>
+    </div>
+
+    <!-- Practical Driving Courses -->
+    <div class="course">
+        <img src="{% static 'images/motor.png' %}" alt="Automatic Motorcycle">
+        <h3>Automatic Motorcycle</h3>
+        <br>
+        <p>Learn to ride an automatic motorcycle safely and confidently.</p>
+    </div>
+
+    <div class="course">
+        <img src="{% static 'images/moto-manual.png' %}" alt="Manual Motorcycle">
+        <h3>Manual Motorcycle</h3>
+        <br>
+        <p>Master clutch control and gear shifting on a manual motorcycle.</p>
+    </div>
+
+    <div class="course">
+        <img src="{% static 'images/tricycle.avif' %}" alt="Manual Motorcycle">
+        <h3>Tricycle</h3>
+        <br>
+        <p>Master clutch control and gear shifting on a manual motorcycle.</p>
+    </div>
+
+    <div class="course">
+        <img src="{% static 'images/matic.png' %}" alt="Automatic Car">
+        <h3>Automatic Transmission Car</h3>
+        <br>
+        <p>Learn how to drive an automatic car with ease and confidence.</p>
+    </div>
+
+    <div class="course">
+        <img src="{% static 'images/manual-car.png' %}" alt="Manual Transmission Car">
+        <h3>Manual Transmission Car</h3>
+        <br>
+        <p>Develop full control over a manual car with clutch and gear shifting techniques.</p>
+    </div>
+
+    <div class="full-width">
+        <h2 class="section-title">Theoretical Driving Course</h2>
+        <a href="{% url 'enrollment_create' %}" class="btn-enroll">Enroll Now</a>
+    </div>
+
+    <!-- Theoretical Driving Course -->
+    <div class="course">
+        <img src="{% static 'images/theoretical.png' %}" alt="Theoretical Driving Course">
+        <h3>Theoretical Driving Course</h3>
+        <br>
+        <p>Gain essential knowledge about traffic laws, road safety, and responsible driving.</p>
+    </div>
+
+</section>
+
 {% endblock content %}

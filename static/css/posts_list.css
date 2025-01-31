@@ -1,0 +1,72 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.post-comment-link {
+    display: inline-block;
+    background-color: #0078d4;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-comment-link:hover {
+    background-color: #172A45;
+    transform: scale(1.05);
+}
+
+.post-entry {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-entry:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.post-author-link {
+    font-size: 1.5rem;
+    color: #0078d4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-author-link:hover {
+    text-decoration: underline;
+    color: #172A45;
+}
+
+.post-entry p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .post-comment-link {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+
+    .post-entry {
+        padding: 15px;
+    }
+
+    .post-author-link {
+        font-size: 1.3rem;
+    }
+}

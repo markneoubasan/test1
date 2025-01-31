@@ -1,7 +1,40 @@
 {% extends 'app/base.html' %}
-
+{% load static %}
 {% block content %}
-{% include 'app/navbar.html' %}
 <br><br><br><br><br>
-<h1>This is about page</h1>
+<div class="about-section">
+    <div class="container">
+        <h1 class="section-title">About NextGen Driving School</h1>
+        <p class="section-intro">At NextGen Driving School, we are committed to providing top-quality driving education
+            that empowers our students with the skills, confidence, and knowledge needed to drive safely and responsibly.</p>
+
+        <div class="about-content">
+            <div class="about-image">
+                <img src="{% static 'images/drive.jpg' %}" alt="Driving School Training">
+            </div>
+            <div class="about-text">
+                <h2>Why Choose Us?</h2>
+                <ul>
+                    <li>Certified and experienced instructors</li>
+                    <li>Comprehensive driving courses for all levels</li>
+                    <li>Flexible schedules to suit your availability</li>
+                    <li>Modern, well-maintained vehicles</li>
+                    <li>Focus on road safety and defensive driving techniques</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mission-section">
+            <h2>Our Mission</h2>
+            <p>Our mission is to equip aspiring drivers with the necessary skills and confidence to navigate the roads safely.
+               We believe in fostering responsible driving habits that contribute to a safer and more disciplined driving environment.</p>
+        </div>
+
+        <div class="cta-section">
+            <h2>Join Us Today!</h2>
+            <p>Start your driving journey with NextGen Driving School and gain the expertise needed to drive with confidence.</p>
+            <a href="{% url 'course' %}" class="btn btn-enroll">View Courses</a>
+        </div>
+    </div>
+</div>
 {% endblock content %}

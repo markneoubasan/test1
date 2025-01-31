@@ -1,0 +1,202 @@
+.about-section {
+    padding: 80px 20px;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    font-size: 42px;
+    font-weight: bold;
+    color: #0077cc;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #007bff;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+.section-intro {
+    font-size: 20px;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 50px;
+    text-align: left;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 500px;
+    animation: fadeInLeft 1s ease-in-out;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+}
+
+.about-text {
+    flex: 1;
+    max-width: 600px;
+    animation: fadeInRight 1s ease-in-out;
+}
+
+.about-text h2 {
+    font-size: 32px;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.about-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-text li {
+    font-size: 18px;
+    color: #666;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-text li::before {
+    content: "✔";
+    color: #007bff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.mission-section {
+    margin-top: 60px;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.mission-section h2 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.mission-section p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+@keyframes dazzlingGlow {
+    0% { box-shadow: 0 0 10px rgba(0, 170, 255, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(0, 170, 255, 0.6), 0 0 50px rgba(0, 123, 255, 0.4); }
+    100% { box-shadow: 0 0 10px rgba(0, 170, 255, 0.3); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+.cta-section {
+    margin-top: 60px;
+    padding: 50px;
+    background: linear-gradient(135deg, #0a1931, #0f2d52);
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    animation: dazzlingGlow 2s infinite alternate ease-in-out;
+    overflow: hidden;
+}
+
+.cta-section h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(0, 170, 255, 0.8);
+    color: #0077cc;
+}
+
+.cta-section p {
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: #d4e6f1;
+}
+
+.btn-enroll {
+    display: inline-block;
+    padding: 16px 30px;
+    font-size: 22px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #1F6E8C, #0077cc);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 5px 20px rgba(0, 170, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-enroll:hover {
+    background: linear-gradient(135deg, #0077cc, #0055aa);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0px 8px 25px rgba(0, 170, 255, 0.8);
+}
+
+.cta-section::before, .cta-section::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(white, rgba(255, 255, 255, 0.2));
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkle 2s infinite;
+}
+
+.cta-section::before {
+    top: 20%;
+    left: 10%;
+}
+
+.cta-section::after {
+    bottom: 20%;
+    right: 10%;
+}
+

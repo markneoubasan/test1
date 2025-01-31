@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin_database.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body onload="ShowDashboard()">
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+
+            {% if user.is_authenticated %}
+            <p>{{ user.username }}</p>
+            {% endif %}
+
+            <h2>NextGen Admin Dashboard</h2>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+                    <li><a href="#" onclick="showSection('user')">Users</a></li>
+                    <li><a href="#" onclick="showSection('post')">Posts</a></li>
+                    <li><a href="#" onclick="showSection('course')">Courses</a></li>
+                    <li><a href="#" onclick="showSection('enrollment')">Enrollments</a></li>
+                    <li><a href="#" onclick="showSection('instructor')">Instructors</a></li>
+                </ul>
+            </nav>
+            <!-- Logout Button -->
+            {% if user.is_authenticated %}
+                <a href="{% url 'admin_login' %}" class="logout-btn">Logout</a>
+            {% endif %}
+        </aside>
+        <!-- Button to Open Sidebar -->
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <main class="main-content">
+            <header>
+                <h1>Dashboard</h1>
+            </header>
+            <section id="dashboard" class="content-section" style="display: none;">
+                <h2>Overview</h2>
+                <div class="overview-cards">
+                    <div class="card">
+                        <h3>Total Users</h3>
+                        <p>{{ total_users }}</p>
+                    </div>
+                    <div class="card">
+                        <h3>Total Instructors</h3>
+                        <p>{{ total_instructors }}</p>
+                    </div>
+                </div>
+
+                <div class="tables-section">
+                    <div class="table-container">
+                        <h3>Recent Registered User</h3>
+                        <table class="dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ recent_user.name }}</td>
+                                    <td>{{ recent_user.username }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-container">
+                        <h3>Recent Post</h3>
+                        <table class="dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Post Content</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ recent_post.user }}</td>
+                                    <td>{{ recent_post.body }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="user" class="content-section" style="display: none;">
+                <h2>Users</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'user_create' %}'">Add User</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.password }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                <button class="edit-button" title="Edit User" onclick="window.location.href='{% url 'user_update' user.pk %}'"><i class='bx bx-edit'></i></button>
+                                <button class="delete-button" title="Delete User" onclick="window.location.href='{% url 'user_delete' user.pk %}'"><i class='bx bxs-trash'></i></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="post" class="content-section" style="display: none;">
+                <h2>Posts</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'admin_post_create' %}'">Add Post</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Comment</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="postTableBody">
+                        {% for post in posts %}
+                        <tr>
+                            <td>{{ post.user }}</td>
+                            <td>{{ post.body }}</td>
+                            <td>
+                                <button class="delete-button" title="Delete Post" onclick="window.location.href='{% url 'posts_delete' post.pk %}'"><i class='bx bxs-trash'></i></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+            <section id="course" class="content-section" style="display: none;">
+                <h2>Courses</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'course_create' %}'">Add Course</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course Type</th>
+                            <th>Description</th>
+                            <th>Duration</th>
+                            <th>Instructor</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="courseTableBody">
+                        {% for course in courses %}
+                        <tr>
+                            <td>{{ course.course_type }}</td>
+                            <td>{{ course.description }}</td>
+                            <td>{{ course.duration }}</td>
+                            <td>{{ course.instructor }}</td>
+                            <td>
+                                <button class="edit-button" title="Edit Course" onclick="window.location.href='{% url 'course_update' course.pk %}'"><i class='bx bx-edit'></i></button>
+                                <button class="delete-button" title="Delete Course" onclick="window.location.href='{% url 'course_delete' course.pk %}'"><i class='bx bxs-trash'></i></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="enrollment" class="content-section" style="display: none;">
+                <h2>Enrollments</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'admin_enrollment_create' %}'">Add Enrollment</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Course</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enrollmentTableBody">
+                        {% for enrollment in enrollments %}
+                        <tr>
+                            <td>{{ enrollment.user }}</td>
+                            <td>{{ enrollment.course }}</td>
+                            <td>{{ enrollment.enrollment_date }}</td>
+                            <td>{{ enrollment.enrollment_status }}</td>
+                            <td>
+                                <button class="edit-button" title="Edit Enrollment" onclick="window.location.href='{% url 'enrollment_update' enrollment.pk %}'"><i class='bx bx-edit'></i></button>
+                                <button class="delete-button" title="Delete Enrollment" onclick="window.location.href='{% url 'enrollment_delete' enrollment.pk %}'"><i class='bx bxs-trash'></i></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="instructor" class="content-section" style="display: none;">
+                <h2>Instructors</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'instructor_create' %}'">Add Instructor</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Bio</th>
+                            <th>Verified Credentials</th>
+                            <th>Years of Experience</th>
+                            <th>Profile Picture</th>
+                            <th>Specialties</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="instructorTableBody">
+                        {% for instructor in instructors %}
+                        <tr>
+                            <td>{{ instructor.name }}</td>
+                            <td>{{ instructor.bio }}</td>
+                            <td>
+                                {% if instructor.verified_credentials %}
+                                <img src="{{ instructor.verified_credentials.url }}"
+                                     style="max-width: 100px; max-height: 100px;"
+                                />
+                                {% else %}
+                                <span>No image Available</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ instructor.years_of_experience }}</td>
+                            <td>{% if instructor.profile_picture %}
+                                <img src="{{ instructor.profile_picture.url }}"
+                                     style="max-width: 100px; max-height: 100px;"
+                                />
+                                {% else %}
+                                <span>No image Available</span>
+                                {% endif %}</td>
+                            <td>{{ instructor.specialties }}</td>
+                            <td>{{ instructor.contact_email }}</td>
+                            <td>{{ instructor.phone_number }}</td>
+                            <td>
+                                <button class="edit-button" title="Edit Instructor" onclick="window.location.href='{% url 'instructor_update' instructor.pk %}'"><i class='bx bx-edit'></i></button>
+                                <button class="delete-button" title="Delete Instructor" onclick="window.location.href='{% url 'instructor_delete' instructor.pk %}'"><i class='bx bxs-trash'></i></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script src="{% static 'js/database.js' %}"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
